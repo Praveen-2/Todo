@@ -6,12 +6,12 @@ describe('WelcomeComponent', () => {
   let component: WelcomeComponent;
   let fixture: ComponentFixture<WelcomeComponent>;
 
-  beforeEach(async () => {
+  beforeEach(async) {
     await TestBed.configureTestingModule({
       declarations: [ WelcomeComponent ]
     })
     .compileComponents();
-  });
+  }
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WelcomeComponent);
