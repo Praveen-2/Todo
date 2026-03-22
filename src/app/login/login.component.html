@@ -1,0 +1,17 @@
+<div class="login-page">
+
+  <div class="login-box">
+    <h2>Sign in</h2>
+    <p>Use your Account</p>
+
+    <input type="text" placeholder="Username" [(ngModel)]="Username">
+    <input type="password" placeholder="Password" [(ngModel)]="Password">
+
+    <button (click)="handleLogin()">Sign In</button>
+
+    <small *ngIf="invalidLogin" class="error">
+      {{errorMessage}}
+    </small>
+  </div>
+
+</div>
