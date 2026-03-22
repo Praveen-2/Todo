@@ -1,20 +1,46 @@
-<div class="container">
-  <nav class="navbar">
-    <h1>Todo App</h1>
-    <button (click)="logout()">Logout</button>
-  </nav>
+<div class="dashboard">
+  <div class="header">
+    <h1>Welcome Dashboard</h1>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
 
-  <div class="content">
-    <h2>Welcome Back!</h2>
-    <p>You're logged in successfully</p>
-    
-    <div class="tasks">
-      <h3>Your Tasks</h3>
-      <ul>
-        <li>Task 1</li>
-        <li>Task 2</li>
-        <li>Task 3</li>
-      </ul>
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-value">{{ totalCount }}</div>
+      <div class="stat-label">Total Tasks</div>
     </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ completedCount }}</div>
+      <div class="stat-label">Completed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ totalCount - completedCount }}</div>
+      <div class="stat-label">Pending</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ progressPercent | number:'1.0-0' }}%</div>
+      <div class="stat-label">Progress</div>
+    </div>
+  </div>
+
+  <div class="tasks-section">
+    <h2>Tasks</h2>
+    <div class="task-list">
+      <div class="task-item" *ngFor="let task of tasks" [class.completed]="task.completed">
+        <input 
+          type="checkbox" 
+          [checked]="task.completed" 
+          (change)="toggleTask(task)">
+        <span>{{ task.name }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-section">
+    <h2>Weekly Progress</h2>
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="progressPercent"></div>
+    </div>
+    <p class="progress-text">{{ completedCount }} of {{ totalCount }} tasks completed</p>
   </div>
 </div>
